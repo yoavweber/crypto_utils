@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='crypto_trade_helpers',
-    version='1.0',
+    version='1.1',
     packages=['crypto_utils'], # contains our actual code
     author='chris',
     author_email='chris@packagr.app',
