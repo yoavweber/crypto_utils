@@ -192,7 +192,6 @@ class Order:
 
 class UserDict(TypedDict):
     name: str
-    age: int
     id: str
     name: str
     api_key: str
@@ -202,7 +201,6 @@ class UserDict(TypedDict):
 
 class User:
     name: str
-    age: int
     id: str
     name: str
     api_key: str
