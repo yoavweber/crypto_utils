@@ -158,7 +158,7 @@ class Leverage_Change(TypedDict):
     market_type: str
 
 
-class User:
+class User_Old:
     def __init__(self, id, api_key, api_secret, name, email, is_mother):
         self.id = id
         self.name = name
@@ -187,3 +187,29 @@ class Order:
     user = ""
     mother_user_order_id = ""
     market_type = ""
+
+
+
+class UserDict(TypedDict):
+    name: str
+    age: int
+    id: str
+    name: str
+    api_key: str
+    api_secret: str
+    email: str
+    is_mother: bool
+
+class User:
+    name: str
+    age: int
+    id: str
+    name: str
+    api_key: str
+    api_secret: str
+    email: str
+    is_mother: bool
+
+    def __init__(self, data: UserDict):
+        for k, _ in get_type_hints(self).items():
+            setattr(self, k, data[k])
