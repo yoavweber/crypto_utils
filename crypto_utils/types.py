@@ -1,4 +1,4 @@
-from typing import TypedDict, List, Union
+from typing import TypedDict, List, get_type_hints
 from enum import Enum
 
 
