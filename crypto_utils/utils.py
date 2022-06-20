@@ -32,3 +32,6 @@ def get_user_market(user: User) -> Market_Type:
 
 
 
+def format_child_order_id(mother_order_id:str,user:User):
+    '''formating user id from mother id and user apikey and name to communicate across services'''
+    return mother_order_id + "|" + user.api_key + "|" + user.name
