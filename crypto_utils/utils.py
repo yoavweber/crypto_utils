@@ -2,6 +2,8 @@ import os
 from crypto_utils.types import *
 import requests as r
 import json 
+from unicorn_fy.unicorn_fy import UnicornFy
+
 
 def is_development() -> bool:
     if os.getenv("APP_ENV") != "prod":
@@ -29,6 +31,11 @@ def get_user_market(user: User) -> Market_Type:
     if user_market == Market_Type.Futures.value:
         return Market_Type.Futures
     return Market_Type.Spot
+
+def get_event_parser(market):
+    parser_to_function = {"binance.com-futures": UnicornFy.binance_com_futures_websocket,
+                          "binance.com": UnicornFy.binance_com_websocket}
+    return parser_to_function[market]
 
 
 
