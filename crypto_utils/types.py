@@ -41,7 +41,8 @@ class Order_Type(Enum):
 class Event_Type(Enum):
     Futures_Order = "ORDER_TRADE_UPDATE"
     Spot_Order = "executionReport"
-    Account = "ACCOUNT_UPDATE"
+    Account_Futures = "ACCOUNT_UPDATE"
+    Account_Spot = "outboundAccountPosition"
     Leverage_Change = "ACCOUNT_CONFIG_UPDATE"
 
 
