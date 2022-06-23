@@ -41,4 +41,9 @@ def get_event_parser(market):
 
 def format_child_order_id(mother_order_id:str,user:User):
     '''formating user id from mother id and user apikey and name to communicate across services'''
-    return mother_order_id + "|" + user.api_key + "|" + user.name
+    short_api_key = user.api_key[:5]
+    strip_space_from_name = user.name.replace(" ", "_")
+    order_id = mother_order_id + "_" +  strip_space_from_name + "_" +  short_api_key 
+    if len(order_id) > 35:
+        return order_id[:34]
+    return order_id
