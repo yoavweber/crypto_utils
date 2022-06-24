@@ -90,6 +90,41 @@ class Future_Asset(TypedDict):
     updateTime: int
 
 
+class Spot_Balance(TypedDict):
+    asset: str
+    free: str
+    locked: str
+
+
+
+class Futures_Balance_Account_Update(TypedDict):
+    asset: str
+    withdrawAvailable: str
+    balance: str
+
+class Account_Update_Position(TypedDict):
+    symbol: str
+    amount: str
+    entry_price: str
+    margin_type: str
+    position_side: str
+    
+    
+
+class Futures_Assets_Update(TypedDict):
+    user_id: str
+    market_type: str
+    assets: List[Futures_Balance_Account_Update]
+    positions: List[Account_Update_Position]
+    
+
+class Spot_Assets_Update(TypedDict):
+    user_id: str
+    market_type: str
+    assets: List[Spot_Balance]
+
+
+
 class Futures_Account_Event(TypedDict, total=False):
     stream_type: Event_Type
     event_type: Event_Type
