@@ -83,7 +83,7 @@ class FuturesEvent(TypedDict):
     transaction_time: int
 
 
-class Futures_Balance(TypedDict, total=False):
+class Futures_Balance_Raw(TypedDict, total=False):
     asset: str
     wallet_balance: str
     cross_wallet_balance: str
@@ -104,7 +104,7 @@ class Spot_Balance(TypedDict):
 
 
 
-class Futures_Balance_Account_Update(TypedDict):
+class Futures_Balance(TypedDict):
     asset: str
     withdrawAvailable: str
     balance: str
@@ -118,15 +118,15 @@ class Account_Update_Position(TypedDict):
     
     
 
-class Futures_Assets_Update(TypedDict):
+class Account_Update_Futures(TypedDict):
     user_id: str
     market_type: str
-    assets: List[Futures_Balance_Account_Update]
+    assets: List[Futures_Balance]
     positions: List[Account_Update_Position]
     work_type: str
     
 
-class Spot_Assets_Update(TypedDict):
+class Account_Update_Spot(TypedDict):
     user_id: str
     market_type: str
     assets: List[Spot_Balance]
