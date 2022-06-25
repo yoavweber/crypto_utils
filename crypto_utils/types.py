@@ -23,6 +23,13 @@ class Binance_Market(Enum):
     Futures_Test = "binance.com-futures-testnet"
 
 
+
+
+class Work_Type(Enum):
+    New_Order = "new_order"
+    Account_Update = "account_update"
+    Status_Change = "status_change"
+
 class Order_Type(Enum):
     Market = "MARKET"
     Limit = "LIMIT"
@@ -116,12 +123,15 @@ class Futures_Assets_Update(TypedDict):
     market_type: str
     assets: List[Futures_Balance_Account_Update]
     positions: List[Account_Update_Position]
+    work_type: str
     
 
 class Spot_Assets_Update(TypedDict):
     user_id: str
     market_type: str
     assets: List[Spot_Balance]
+    work_type: str
+
 
 
 
@@ -151,11 +161,6 @@ class Cancel_Order(TypedDict):
     symbol: str
     client_order_id: str
 
-
-class Work_Type(Enum):
-    New_Order = "NEW"
-    Cancel_Order = "CANCEL"
-    Order_Status = "STATUS"
 
 
 class Update_Order(TypedDict):
