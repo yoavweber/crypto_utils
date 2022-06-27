@@ -29,9 +29,6 @@ LOGGING_CONFIG = {
     }
 }
 
-# logging.config.dictConfig(LOGGING_CONFIG)
-# log = logging.getLogger("my_logger")
-# log.debug("Logging is configured.")
 
 
 class Telegram:
