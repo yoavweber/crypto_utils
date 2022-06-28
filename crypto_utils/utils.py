@@ -2,7 +2,7 @@ import os
 from crypto_utils.types import *
 import requests as r
 import json 
-from unicorn_fy.unicorn_fy import UnicornFy
+from unicorn_fy.unicorn_fy import UnicornFy #type: ignore
 
 
 def is_development() -> bool:
@@ -41,9 +41,8 @@ def get_event_parser(market):
 
 def format_child_order_id(mother_order_id:str,user:User):
     '''formating user id from mother id and user apikey and name to communicate across services'''
-    short_api_key = user.api_key[:5]
-    strip_space_from_name = user.name.replace(" ", "_")
-    order_id = mother_order_id + "_" +  strip_space_from_name + "_" +  short_api_key 
+    short_api_key = user.api_key[:10]
+    order_id = mother_order_id + "_" + short_api_key
     if len(order_id) > 35:
         return order_id[:34]
     return order_id
