@@ -199,23 +199,6 @@ class Leverage_Change(TypedDict):
     market_type: str
 
 
-class User_Old:
-    def __init__(self, id, api_key, api_secret, name, email, is_mother):
-        self.id = id
-        self.name = name
-        self.api_key = api_key
-        self.api_secret = api_secret
-        self.name = name
-        self.email = email
-        self.is_mother = is_mother
-
-    id = ""
-    name = ""
-    api_key = ""
-    api_secret = ""
-    email = ""
-    is_mother = ""
-
 
 class Order:
     binance_id = ""
@@ -252,3 +235,20 @@ class User:
     def __init__(self, data: UserDict):
         for k, _ in get_type_hints(self).items():
             setattr(self, k, data[k])
+
+class Backend_Order(TypedDict, total=False):
+    symbol: str
+    orderId: str
+    clientOrderId: str
+    price: str
+    origQty: str
+    status: str
+    timeInForce: str
+    type: str
+    side: str
+    transaction_time: str
+    user_key: str
+    market_type: str
+    work_type: str
+    reduce_only: str
+    
