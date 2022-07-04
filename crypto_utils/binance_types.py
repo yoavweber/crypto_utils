@@ -1,26 +1,10 @@
-from typing import TypedDict, List, get_type_hints,Union
+from typing import TypedDict, List
 from enum import Enum
 
 
 class Side(Enum):
     Buy = "BUY"
     Sell = "SELL"
-
-
-class Market_Type(Enum):
-    Futures = "futures"
-    Spot = "spot"
-    Margin = "margin"
-
-
-# deprecated
-class Binance_Market(Enum):
-    Spot = "binance.com"
-    Spot_Test = "binance.com-testnet"
-    Margin = "binance.com-margin"
-    Margin_Test = "binance.com-margin-testnet"
-    Futures = "binance.com-futures"
-    Futures_Test = "binance.com-futures-testnet"
 
 
 
@@ -79,7 +63,7 @@ class FuturesEvent(TypedDict):
     order_type: str
     reduce_only: bool
     current_order_status: str
-    market_type: Market_Type
+    market_type: str
     transaction_time: int
 
 
@@ -109,29 +93,6 @@ class Futures_Balance(TypedDict):
     withdrawAvailable: str
     balance: str
 
-class Account_Update_Position(TypedDict):
-    symbol: str
-    amount: str
-    entry_price: str
-    margin_type: str
-    position_side: str
-    
-    
-
-class Account_Update_Futures(TypedDict):
-    user_id: str
-    market_type: str
-    assets: List[Futures_Balance]
-    positions: List[Account_Update_Position]
-    work_type: str
-    
-
-class Account_Update_Spot(TypedDict):
-    user_id: str
-    market_type: str
-    assets: List[Spot_Balance]
-    work_type: str
-
 
 
 
@@ -157,19 +118,6 @@ class Futures_Account_Event(TypedDict, total=False):
     unicorn_fied: List[str]
 
 
-class Cancel_Order(TypedDict):
-    symbol: str
-    client_order_id: str
-
-
-
-class Update_Order(TypedDict):
-    market_type: Market_Type
-    status: Order_Type
-    symbol: str
-    clientOrderId: str
-    work_type: str
-    userId: str
 
 
 class Futures_Position(TypedDict):
@@ -200,87 +148,3 @@ class Leverage_Change(TypedDict):
 
 
 
-class Futures_Order_Raw(TypedDict):
-    symbol: str
-    price: str
-    origQty: str
-    side: str
-    reduceOnly: str
-    status: str
-    stopPrice: str
-    timeInForce: str
-    clientOrderId: str
-    closePosition: str
-    positionSide: str
-    cumQty: str
-    cumQuote: str
-    executedQty: str
-    avgPrice: str
-    orderId: float
-    orderListId: str
-    origType: str
-    activatePrice: str
-    priceRate: str
-    updateTime: float
-    workingType: str
-    priceProtect: str
-
-class Spot_Order_Raw(TypedDict):
-    symbol: str
-    orderId: float
-    orderListId: str
-    clientOrderId: str
-    newClientOrderId: str
-    transactTime: float
-    price: str
-    origQty: str
-    status: str
-    side: str
-    type: str
-    timeInForce: str
-    cummulativeQuoteQty: str
-    executedQty: str
-
-class Backend_Order_Abstract(TypedDict):
-    id: str
-    price: str
-    quantity: str
-    side: str
-    status: str
-    symbol: str
-    order_type: str
-    market_type: str
-    user_id: str
-    mother_user_order_id: str
-    work_type: str
-    timestamp: float
-
-
-class Backend_Spot_Order(Backend_Order_Abstract):
-    pass
-
-class Backend_Futures_Order(Backend_Order_Abstract):
-    reduce_only: str
-
-
-class UserDict(TypedDict):
-    name: str
-    id: str
-    name: str
-    api_key: str
-    api_secret: str
-    email: str
-    is_mother: bool
-
-class User:
-    name: str
-    id: str
-    name: str
-    api_key: str
-    api_secret: str
-    email: str
-    is_mother: bool
-
-    def __init__(self, data: UserDict):
-        for k, _ in get_type_hints(self).items():
-            setattr(self, k, data[k])
