@@ -1,4 +1,5 @@
 from typing import TypedDict, List, get_type_hints,Union
+from typing_extensions import NotRequired
 from enum import Enum
 
 
@@ -241,27 +242,6 @@ class Spot_Order_Raw(TypedDict):
     cummulativeQuoteQty: str
     executedQty: str
 
-class Backend_Order_Abstract(TypedDict):
-    id: str
-    price: str
-    quantity: str
-    side: str
-    status: str
-    symbol: str
-    order_type: str
-    market_type: str
-    user_id: str
-    mother_user_order_id: str
-    work_type: str
-    timestamp: float
-
-
-class Backend_Spot_Order(Backend_Order_Abstract):
-    pass
-
-class Backend_Futures_Order(Backend_Order_Abstract):
-    reduce_only: str
-
 
 class UserDict(TypedDict):
     name: str
@@ -284,3 +264,30 @@ class User:
     def __init__(self, data: UserDict):
         for k, _ in get_type_hints(self).items():
             setattr(self, k, data[k])
+
+
+class Backend_Order_Abstract(TypedDict):
+    id: str
+    price: str
+    quantity: str
+    side: str
+    status: str
+    symbol: str
+    order_type: str
+    mother_user_order_id: str
+    timestamp: float
+    reduce_only: NotRequired[bool]
+
+
+class Backend_Spot_Order(Backend_Order_Abstract):
+    pass
+
+class Backend_Futures_Order(Backend_Order_Abstract):
+    reduce_only: bool
+
+    
+class Backend_Order(TypedDict):
+    data: Union[Backend_Futures_Order,Backend_Spot_Order]
+    user_id: str
+    market_type: str
+    work_type: str
