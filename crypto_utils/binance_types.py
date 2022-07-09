@@ -153,7 +153,7 @@ class Account_Update_Position(TypedDict):
 class Account_Update_Futures(TypedDict):
     stream_type: str
     event_type: str
-    event_time: str
+    event_time: float
     transaction: float
     event_reason: float
     balances: List[Futures_Balance_Raw]
