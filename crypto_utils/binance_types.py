@@ -158,6 +158,6 @@ class Account_Update_Futures(TypedDict):
     transaction: float
     event_reason: float
     balances: List[Futures_Balance_Raw]
-    position: List[Account_Update_Position]
+    positions: List[Account_Update_Position]
 
 
