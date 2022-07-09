@@ -1,4 +1,3 @@
-from turtle import position
 from typing import TypedDict, List
 from enum import Enum
 
