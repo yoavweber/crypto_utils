@@ -1,3 +1,4 @@
+from turtle import position
 from typing import TypedDict, List
 from enum import Enum
 
@@ -7,12 +8,11 @@ class Side(Enum):
     Sell = "SELL"
 
 
-
-
 class Work_Type(Enum):
     New_Order = "new_order"
     Account_Update = "account_update"
     Status_Change = "status_change"
+
 
 class Order_Type(Enum):
     Market = "MARKET"
@@ -87,13 +87,10 @@ class Spot_Balance(TypedDict):
     locked: str
 
 
-
 class Futures_Balance(TypedDict):
     asset: str
     withdrawAvailable: str
     balance: str
-
-
 
 
 class Futures_Account_Event(TypedDict, total=False):
@@ -116,8 +113,6 @@ class Futures_Account_Event(TypedDict, total=False):
     order_type: str
     current_order_status: str
     unicorn_fied: List[str]
-
-
 
 
 class Futures_Position(TypedDict):
@@ -146,5 +141,23 @@ class Leverage_Change(TypedDict):
     leverage: int
     market_type: str
 
+class Account_Update_Position(TypedDict):
+    symbol: str
+    position_amount: str
+    entry_price: str
+    accumulated_realized: str
+    upnl: str
+    margin_type: str
+    isolated_wallet: str
+    position_side: str
+
+class Account_Update_Futures(TypedDict):
+    stream_type: str
+    event_type: str
+    event_time: str
+    transaction: float
+    event_reason: float
+    balances: List[Futures_Balance_Raw]
+    position: List[Account_Update_Position]
 
 

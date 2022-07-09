@@ -1,4 +1,4 @@
-from typing import TypedDict, List, get_type_hints,Union
+from typing import TypedDict, List, get_type_hints, Union
 from typing_extensions import NotRequired
 from enum import Enum
 
@@ -24,12 +24,11 @@ class Binance_Market(Enum):
     Futures_Test = "binance.com-futures-testnet"
 
 
-
-
 class Work_Type(Enum):
     New_Order = "new_order"
     Account_Update = "account_update"
     Status_Change = "status_change"
+
 
 class Order_Type(Enum):
     Market = "MARKET"
@@ -104,11 +103,11 @@ class Spot_Balance(TypedDict):
     locked: str
 
 
-
 class Futures_Balance(TypedDict):
     asset: str
     withdrawAvailable: str
     balance: str
+
 
 class Account_Update_Position(TypedDict):
     symbol: str
@@ -116,8 +115,7 @@ class Account_Update_Position(TypedDict):
     entry_price: str
     margin_type: str
     position_side: str
-    
-    
+
 
 class Account_Update_Futures(TypedDict):
     user_id: str
@@ -125,15 +123,13 @@ class Account_Update_Futures(TypedDict):
     assets: List[Futures_Balance]
     positions: List[Account_Update_Position]
     work_type: str
-    
+
 
 class Account_Update_Spot(TypedDict):
     user_id: str
     market_type: str
     assets: List[Spot_Balance]
     work_type: str
-
-
 
 
 class Futures_Account_Event(TypedDict, total=False):
@@ -161,7 +157,6 @@ class Futures_Account_Event(TypedDict, total=False):
 class Cancel_Order(TypedDict):
     symbol: str
     client_order_id: str
-
 
 
 class Update_Order(TypedDict):
@@ -200,7 +195,6 @@ class Leverage_Change(TypedDict):
     market_type: str
 
 
-
 class Futures_Order_Raw(TypedDict):
     symbol: str
     price: str
@@ -225,6 +219,7 @@ class Futures_Order_Raw(TypedDict):
     updateTime: float
     workingType: str
     priceProtect: str
+
 
 class Spot_Order_Raw(TypedDict):
     symbol: str
@@ -251,6 +246,7 @@ class UserDict(TypedDict):
     api_secret: str
     email: str
     is_mother: bool
+
 
 class User:
     name: str
@@ -282,12 +278,13 @@ class Backend_Order_Abstract(TypedDict):
 class Backend_Spot_Order(Backend_Order_Abstract):
     pass
 
+
 class Backend_Futures_Order(Backend_Order_Abstract):
     reduce_only: bool
 
-    
+
 class Backend_Order(TypedDict):
-    data: Union[Backend_Futures_Order,Backend_Spot_Order]
+    data: Union[Backend_Futures_Order, Backend_Spot_Order]
     user_id: str
     market_type: str
     work_type: str
