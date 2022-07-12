@@ -28,6 +28,7 @@ class Work_Type(Enum):
     New_Order = "new_order"
     Account_Update = "account_update"
     Status_Change = "status_change"
+    Trading_Mode = "trading_mode"
 
 
 class Order_Type(Enum):
@@ -288,3 +289,9 @@ class Backend_Order(TypedDict):
     user_id: str
     market_type: str
     work_type: str
+
+class Backend_Trade_Mode(TypedDict):
+    symbol: str
+    leverage: int
+    margin_type: str
+    
