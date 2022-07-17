@@ -290,8 +290,16 @@ class Backend_Order(TypedDict):
     market_type: str
     work_type: str
 
-class Backend_Trade_Mode(TypedDict):
+class Backend_Trade_Mode_Create(TypedDict):
     symbol: str
     leverage: int
     margin_type: str
-    
+    work_type: str
+    event_time: float
+
+class Backend_Trade_Mode_Update(TypedDict):
+    symbol: str
+    leverage: NotRequired[int]
+    margin_type: NotRequired[str]
+    work_type: str
+    event_time: float
