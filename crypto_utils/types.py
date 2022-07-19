@@ -29,6 +29,8 @@ class Work_Type(Enum):
     Account_Update = "account_update"
     Status_Change = "status_change"
     Trading_Mode = "trading_mode"
+    Update_Trading_Mode = "update_trading_mode"
+
 
 
 class Order_Type(Enum):
@@ -289,6 +291,9 @@ class Backend_Order(TypedDict):
     user_id: str
     market_type: str
     work_type: str
+    
+
+# TODO: change the information to have meta data and data. this has to be general to all the type the consumer is recevieng
 
 class Backend_Trade_Mode_Create(TypedDict):
     symbol: str
