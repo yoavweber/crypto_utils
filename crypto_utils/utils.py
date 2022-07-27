@@ -48,3 +48,11 @@ def format_child_order_id(mother_order_id: str, user: User):
     if len(order_id) > 35:
         return order_id[:34]
     return order_id
+
+def adjust_margin_type_to_binance_api(margin_type:str) -> Margin_Type_Enum:
+    if margin_type == "cross":
+        return Margin_Type_Enum.Crossed
+    elif  margin_type == "isolated":
+        return Margin_Type_Enum.Isolated
+    else:
+        raise Exception(f"unkown margin type value: {margin_type}" )

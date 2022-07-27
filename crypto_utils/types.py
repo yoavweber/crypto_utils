@@ -13,6 +13,9 @@ class Market_Type(Enum):
     Spot = "spot"
     Margin = "margin"
 
+class Margin_Type_Enum(Enum):
+    Crossed = "CROSSED"
+    Isolated = "ISOLATED"
 
 # deprecated
 class Binance_Market(Enum):
