@@ -5,12 +5,10 @@ class ExchangeName(Enum):
 
 
 class QueueType(Enum):
-    User_Handler = "user_handler"
     Status_Checker = "status_checker"
-    Mother_User_Update = "mother_user_update"
-    User_Update = "user_update"
-    Orders = "orders"
     Backend_Update = "backend_update"
+    App_Execution = "app_execution"
+    
 
 
 class MessageType(Enum):
