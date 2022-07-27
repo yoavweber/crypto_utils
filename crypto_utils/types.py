@@ -66,6 +66,11 @@ class Order_Status(Enum):
     Expired = "EXPIRED"
 
 
+class Event_Handler_Execution(Enum):
+    Stop = "stop"
+    Start = "start"
+    
+
 class FuturesEvent(TypedDict):
     stream_type: str
     event_type: str
